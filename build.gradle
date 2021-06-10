@@ -1,0 +1,59 @@
+buildscript {
+    ext {
+        springBootVersion = '2.3.7.RELEASE'
+    }
+    repositories {
+        maven {
+            url 'http://70.121.224.52:8081/nexus/content/repositories/central/'
+            allowInsecureProtocol true
+        }
+//        maven {
+//            url 'http://70.121.224.52:8081/nexus/content/groups/public-snapshot-repositories/'
+//            allowInsecureProtocol true
+//        }
+        maven {
+            url 'http://70.121.224.52:8081/nexus/content/groups/public/'
+            allowInsecureProtocol true
+        }
+        jcenter {
+            url 'http://70.121.224.52:8081/nexus/content/repositories/jcenter/'
+            allowInsecureProtocol true
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.sds'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url 'http://70.121.224.52:8081/nexus/content/repositories/central/'
+        allowInsecureProtocol true
+    }
+//    maven {
+//        url 'http://70.121.224.52:8081/nexus/content/groups/public-snapshot-repositories/'
+//        allowInsecureProtocol true
+//    }
+    maven {
+        url 'http://70.121.224.52:8081/nexus/content/groups/public/'
+        allowInsecureProtocol true
+    }
+    jcenter {
+        url 'http://70.121.224.52:8081/nexus/content/repositories/jcenter/'
+        allowInsecureProtocol true
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
